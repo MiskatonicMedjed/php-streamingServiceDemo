@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>ScreenMatch Exporter</h1>
+<form action="file-exporter.php" method="post">
+    <fieldset>
+        <label for="name">Name:</label> <br>
+        <input type="text" name="name" id="name" required>
+    </fieldset>
+
+    <fieldset>
+        <label for="name">Year of Release:</label> <br>
+        <input type="year" name="year" id="year" required>
+    </fieldset>
+
+    <fieldset>
+        <label for="name">Rating:</label> <br>
+        <input type="number" name="rating" id="rating" required step="0.1">
+    </fieldset>
+
+    <fieldset>
+        <label for="name">Genre:</label> <br>
+        <select name="genre" id="genre">
+            <option value="super-hero">Super-hero</option>
+            <option value="comedy">Comedy</option>
+            <option value="action">Action</option>
+            <option value="drama">Drama</option>
+        </select>
+    </fieldset>
+
+    <br>
+    <input type="submit" value="Send">
+</form>
+</body>
+</html>
