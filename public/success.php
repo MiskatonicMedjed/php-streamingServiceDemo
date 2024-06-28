@@ -1,5 +1,6 @@
 <?php
-$jsonContent = file_get_contents('../movie.json');
+$movieID = $_GET['ID'];
+$jsonContent = file_get_contents("../$movieID-movie.json");
 $movie = json_decode($jsonContent, true);
 ?>
 <!DOCTYPE html>

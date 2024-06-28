@@ -1,4 +1,5 @@
 <?php
+namespace ScreenMatch\Model;
 enum Genre {
     case Action;
     case Comedy;

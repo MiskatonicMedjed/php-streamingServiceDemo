@@ -1,0 +1,1 @@
+Need to be able to implement a jsonfilelookup method/function or a way to check which files names are there in order to implement the ID system

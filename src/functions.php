@@ -20,55 +20,43 @@ function includedInPlan(string $userPlan, int $year): void{
     echo $string; 
 }
 
-function findMovieTitle(mixed $name) {
+function findMovieTitle(mixed $name): string {
     $semicolonPosition = strpos($name,":");
     return substr($name, 0 , $semicolonPosition);
 }
 
-function findMovieSubtitle(mixed $name){
+function findMovieSubtitle(mixed $name): string{
     $semicolonPosition = strpos($name,":") +1;
     return substr($name, $semicolonPosition);
 }
 
-function getMovie(mixed $fileLocation) {
-    $jsonCode = file_get_contents($fileLocation);
-    $movieArray = json_decode($jsonCode, true);
-    return $movieArray;
-}
+//function getMovie(int $movieID): array {
+//    $jsonCode = file_get_contents($fileLocation);
+//    $movieArray = json_decode($jsonCode, true);
+//    return $movieArray;
+//}
 
-function createMovie(string $name, int $year, float $rating, string $genre): Movie{
-    //create ID system, using file get contents and json_decode to create an array from the last line, 
-    //then getting the id key and using that to define the new key of the next movie to be created
-    $array = [];
-    $array[] = $name;
-    $array[] = $year;
-    $array[] = $rating;
-    $array[] = $genre;
+function createMovie(string $name, int $year, float $rating, string $genre, int $duration): Movie{
+//    $ID = [count(file(__DIR__ . '../movie.json'))]; 
+    //file divides the json line by line into an array, then count counts the number of elements of that array, giving highest array index address + 1 as result
 
-    $jsonCode = json_encode($array);
     $exportData = [
-        'name' => $_POST['name'],
-        'year' => $_POST['year'],
-        'rating' => $_POST['rating'],
-        'genre' => Genre::$_POST['genre'],
-    ];
-    file_put_contents('../movie.json',json_encode($exportData), FILE_APPEND);
+//        'ID' => $ID,
+        'name' => $name,
+        'year' => $year,
+        'rating' => $rating,
+        'genre' => $genre,
+        'duration' => $duration,
+    ]; //Takes params and ID var and creates array to be used for __construct, converting string $genre into Genre::$genre
+
     $movie = new Movie(
+//        $ID('ID'),
         $exportData('name'), 
         $exportData('year'), 
         $exportData('rating'), 
-        $exportData('genre'));
+        $exportData('genre'),
+        $exportData('duration')
+        );
     return $movie;
 }
 
-function jsonLookup($movieName) { //change to $movieID once id system is created
-    $jsonContent = file('../movie.json');
-    $movieArray = json_decode($jsonContent);
-    array_filter($movieArray, );
-    $idNum = [];
-    $idNum = 1;
-}
-
-function jsonLookupCallback($movieName){
-    echo 1;
-};

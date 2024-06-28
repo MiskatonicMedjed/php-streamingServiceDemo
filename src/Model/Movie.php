@@ -1,38 +1,28 @@
 <?php
-class Movie {
-    private array $ratings;
-    private float $averageRating;
+namespace ScreenMatch\Model;
 
+class Movie extends Title
+{
 
     public function __construct(
-        public readonly string $name,
-        public readonly int $releaseYear,
-        public readonly Genre $genre,
-    )    {
-        $this->rating = [];
-    }
-
-    public function setRating(float $rating):void 
+//      int $ID,
+        string $name,
+        int $releaseYear,
+        float $firstRating,
+        Genre $genre,
+        public readonly int $duration
+    )    
     {
-        $this->ratings[] = $reviewRating;
+        parent::__construct(/*$ID,*/ $name, $releaseYear, $genre);
     }
 
-    public function getName(){
-        return $this->name;
-    }
-    public function getReleaseYear(){
-        return $this->releaseYear;
-    }
-    public function getGenre(){
-        return $this->genre;
-    }
-    public function getAverageRating(): float 
+
+    #[\Override]
+    public function duration(): int
     {
-        $ratingsSum = array_sum($this->ratings);
-        $numberOfRatings = count ($this->ratings);
-
-        return $ratingsSum / $numberOfRatings;
+        return $this->duration;
     }
 
 
 }
+
